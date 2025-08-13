@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -24,7 +23,7 @@
         <link rel="stylesheet" type="text/css"
             href="https://cdn.datatables.net/v/bs5/dt-1.11.0/r-2.2.9/rr-1.2.8/datatables.min.css" />
     </head>
-
+    
     <style>
         .divider:after,
         .divider:before {
@@ -55,51 +54,50 @@
 
     <body>
         <section class="vh-100">
-    <div class="container h-custom d-flex align-items-center justify-content-center">
-        <div class="card shadow-lg p-4" style="background-color: white; border-radius: 15px; max-width: 1000px; width: 100%;">
-            <div class="row g-0 align-items-center">
+            <div class="container h-custom d-flex align-items-center justify-content-center">
+                <div class="card shadow-lg p-4" style="background-color: white; border-radius: 15px; max-width: 1000px; width: 100%;">
+                    <div class="row g-0 align-items-center">
 
-                <div class="col-md-6 text-center">
-                    <img src="assets/img/brand.png" class="img-fluid" style="max-width: 90%;">
+                        <div class="col-md-6 text-center">
+                            <img src="assets/img/brand.png" class="img-fluid" style="max-width: 90%;">
+                        </div>
+
+                        <div class="col-md-6">
+                            <h1 class="h4 mb-3">Login</h1>
+                            <form action="#" method="POST">
+                                @csrf
+                                @method('POST')
+
+                                <div class="mb-2">
+                                    <label for="email" class="small">E-mail</label>
+                                    <input type="text" name="email" id="email" class="form-control form-control-sm"
+                                        placeholder="Digite seu e-mail" value="{{ old('email') }}">
+                                </div>
+
+                                <div class="mb-2">
+                                    <label for="password" class="small">Senha</label>
+                                    <input type="password" name="password" id="password" class="form-control form-control-sm"
+                                        placeholder="Digite sua senha" value="{{ old('password') }}">
+                                    <div class="mt-1">
+                                        <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
+                                        <label for="showPassword" class="small">Mostrar Senha</label>
+                                    </div>
+                                </div>
+
+                                <div class="mt-2">
+                                    <button type="submit" class="btn btn-sm btn-outline-success w-100">Entrar</button>
+                                </div>
+
+                                <div class="mt-2">
+                                    <a href="#" class="btn btn-sm btn-outline-primary w-100">Registrar-se</a>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
                 </div>
-                
-                <div class="col-md-6">
-                    <h1 class="h4 mb-3">Login</h1>
-                    <form action="#" method="POST">
-                        @csrf
-                        @method('POST')
-
-                        <div class="mb-2">
-                            <label for="email" class="small">E-mail</label>
-                            <input type="text" name="email" id="email" class="form-control form-control-sm"
-                                placeholder="Digite seu e-mail" value="{{ old('email') }}">
-                        </div>
-
-                        <div class="mb-2">
-                            <label for="password" class="small">Senha</label>
-                            <input type="password" name="password" id="password" class="form-control form-control-sm"
-                                placeholder="Digite sua senha" value="{{ old('password') }}">
-                            <div class="mt-1">
-                                <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
-                                <label for="showPassword" class="small">Mostrar Senha</label>
-                            </div>
-                        </div>
-
-                        <div class="mt-2">
-                            <button type="submit" class="btn btn-sm btn-outline-success w-100">Entrar</button>
-                        </div>
-
-                        <div class="mt-2">
-                            <a href="#" class="btn btn-sm btn-outline-primary w-100">Registrar-se</a>
-                        </div>
-                    </form>
-                </div>
-
             </div>
-        </div>
-    </div>
-</section>
-
+        </section>
 
         <!-- MDB -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
