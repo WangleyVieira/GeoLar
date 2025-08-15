@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'id' => $uuid,
             'name' => 'Admin',
-            'email' => 'teste@geolar.com.br',
+            'email' => 'admin@geolar.com.br',
             'password' => Hash::make('1234567'),
         ]);
     }
