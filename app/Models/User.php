@@ -11,9 +11,10 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
-    use SoftDeletes;
-
+    use HasFactory, Notifiable, SoftDeletes;
+    protected $keyType = 'string';
+    public $incrementing = false;
+    
     /**
      * The attributes that are mass assignable.
      *
