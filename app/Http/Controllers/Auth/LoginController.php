@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginController extends Controller
@@ -21,11 +23,12 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('login');
+        if (!Auth::attempt($request->only(['email', 'password']))) {
+            Alert::toast('E-mail e/ou senha de usuário com dados incorretos', 'error');
+            return redirect()->back();
         }
 
-        Alert::toast('E-mail e/ou senha de usuário com dados incorretos', 'error');
-        return redirect()->back();
+        return redirect()->route('dashboard');
+
     }
 }

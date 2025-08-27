@@ -23,7 +23,7 @@
         <link rel="stylesheet" type="text/css"
             href="https://cdn.datatables.net/v/bs5/dt-1.11.0/r-2.2.9/rr-1.2.8/datatables.min.css" />
     </head>
-    
+
     <style>
         .divider:after,
         .divider:before {
@@ -64,9 +64,10 @@
 
                         <div class="col-md-6">
                             <h1 class="h4 mb-3">Login</h1>
-                            <form action="#" method="POST">
+                            <form action="{{ route('authenticate') }}" method="POST">
                                 @csrf
                                 @method('POST')
+                                @include('sweetalert::alert')
 
                                 <div class="mb-2">
                                     <label for="email" class="small">E-mail</label>
