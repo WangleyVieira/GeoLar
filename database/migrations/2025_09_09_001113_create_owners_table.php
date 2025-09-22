@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->date('birth_date');
+            $table->uuid('registered_by_user')->nullable();
+            $table->foreign('registered_by_user')->references('id')->on('users');
+            $table->uuid('inactivated_by_user')->nullable();
+            $table->foreign('inactivated_by_user')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });

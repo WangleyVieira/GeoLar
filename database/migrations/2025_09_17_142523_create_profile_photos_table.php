@@ -11,18 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attachments', function (Blueprint $table) {
+        Schema::create('profile_photos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('file_name');
-            $table->text('description')->nullable();
-            $table->bigInteger('owner_id')->unsigned();
-            $table->foreign('owner_id')->references('id')->on('owners');
+            $table->text('name_original');
+            $table->text('name_hash');
+
+            $table->uuid('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
+
             $table->uuid('registered_by_user')->nullable();
             $table->foreign('registered_by_user')->references('id')->on('users');
             $table->uuid('inactivated_by_user')->nullable();
             $table->foreign('inactivated_by_user')->references('id')->on('users');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attachments');
+        Schema::dropIfExists('profile_photos');
     }
 };
