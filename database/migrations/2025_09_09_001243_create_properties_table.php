@@ -22,6 +22,10 @@ return new class extends Migration
             $table->decimal('area', 20, 2)->nullable();
             $table->bigInteger('owner_id')->unsigned();
             $table->foreign('owner_id')->references('id')->on('owners');
+            $table->uuid('registered_by_user')->nullable();
+            $table->foreign('registered_by_user')->references('id')->on('users');
+            $table->uuid('inactivated_by_user')->nullable();
+            $table->foreign('inactivated_by_user')->references('id')->on('users');
             $table->softDeletes();
             $table->timestamps();
         });
