@@ -68,8 +68,8 @@
                     <ul class="nav nav-secondary">
                         <li class="nav-item active">
                             <a data-bs-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-                                <i class="fas fa-home"></i>
-                                <p>Dashboard</p>
+                                <i class="fas fa-user"></i>
+                                <p>Perfil</p>
                             </a>
                         </li>
                         <li class="nav-section">
