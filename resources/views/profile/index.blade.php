@@ -35,7 +35,6 @@
     <div class="card">
         <div class="card-header">
             <h4 class="mb-0">Atualizar Perfil</h4>
-            <hr class="my-4">
         </div>
         <div class="card-body">
             <form action="#" method="POST" enctype="multipart/form-data">
@@ -50,7 +49,7 @@
                             <div class="mb-3">
                                 @if ($hasPhoto == 1)
                                     @php
-                                        $path = storage_path('app/public/profile-photo/'.$profilePhoto->name_hash);
+                                        $path = storage_path('app/public/profile-photo/'.$photo->name_hash);
                                         if (File::exists($path)){
                                             $base64 = base64_encode(file_get_contents($path));
                                             $src = 'data:image/png;base64,' . $base64;
@@ -69,20 +68,9 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            {{-- <div class="mt-2">
-                                <ul class="navbar-nav" style="text-align: center">
-                                    <h4 style="text-align: center">
-                                        Perfi: &nbsp
-                                    </h4>
-                                    <h5>
-                                        {{ $user->perfil_label }}
-                                    </h5>
-                                </ul>
-                            </div> --}}
                         </div>
                     </div>
 
-                    <!-- Seção dos Dados do Usuário -->
                     <div class="col-md-8">
                         <div class="row">
                             <div class="form-group col-md-6">
@@ -100,7 +88,6 @@
                                 @enderror
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -114,19 +101,6 @@
 
 @section('scripts')
     <script>
-        $('.cpf').mask('000.000.000-00');
-
-        function maskInputs() {
-            var input = document.getElementsByClassName('telefone')
-            var im = new Inputmask(
-                {
-                    mask: ['(99)9999-9999', '(99)99999-9999'],  keepStatic: true
-                }
-            )
-            im.mask(input)
-        }
-        maskInputs();
-
         //código referente a foto de perfil
         let photo = document.getElementById('imgPhoto');
         console.log(photo);
@@ -150,20 +124,6 @@
             }
 
             reader.readAsDataURL(file.files[0]);
-        });
-
-        $(document).ready(function() {
-
-            $('.select2').select2({
-                language: {
-                    noResults: function() {
-                        return "Nenhum resultado encontrado";
-                    }
-                },
-                closeOnSelect: true,
-                width: '100%',
-            });
-
         });
     </script>
 @endsection
