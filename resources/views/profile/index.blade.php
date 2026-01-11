@@ -37,7 +37,7 @@
             <h4 class="mb-0">Atualizar Perfil</h4>
         </div>
         <div class="card-body">
-            <form action="#" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('updateProfilePhoto', $user->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
 
@@ -47,10 +47,10 @@
                         <div class="imageContainer">
                             <span>Clique na imagem para alterar</span>
                             <div class="mb-3">
-                                @if ($hasPhoto == 1)
+                                @if ($hasPhoto)
                                     @php
-                                        $path = storage_path('app/public/profile-photo/'.$photo->name_hash);
-                                        if (File::exists($path)){
+                                        $path = storage_path('app/public/profile_photos/'.$photo->name_hash);
+                                        if (File::exists($path)) {
                                             $base64 = base64_encode(file_get_contents($path));
                                             $src = 'data:image/png;base64,' . $base64;
                                         }
@@ -58,12 +58,15 @@
                                     @if (isset($src))
                                         <img src="{{ $src }}" class="img-fluid rounded-circle mb-3" width="240" height="240" alt="Imagem de perfil" id="imgPhoto">
                                     @else
-                                        <img src="{{ asset('img/user-avatar2.png') }}" class="img-fluid rounded-circle mb-3" width="240" height="240" alt="Imagem de perfil" id="imgPhoto">
+                                        <img src="{{ asset('img/user-avatar2.png') }}" class="img-fluid rounded-circle mb-3" width="240"
+                                            height="240" alt="Imagem de perfil" id="imgPhoto">
                                     @endif
                                 @else
-                                    <img src="{{ asset('img/user-avatar2.png') }}" class="img-fluid rounded-circle mb-3" width="240" height="240" alt="Imagem de perfil" id="imgPhoto">
+                                    <img src="{{ asset('img/user-avatar2.png') }}" class="img-fluid rounded-circle mb-3" width="240"
+                                        height="240" alt="Imagem de perfil" id="imgPhoto">
                                 @endif
-                                <input type="file" id="flImage" name="fImage" accept="image/jpg, image/jpeg, image/png" class="form-control @error('fImage') is-invalid @enderror">
+                                <input type="file" id="flImage" name="fImage" accept="image/jpg, image/jpeg, image/png"
+                                    class="form-control @error('fImage') is-invalid @enderror">
                                 @error('fImage')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

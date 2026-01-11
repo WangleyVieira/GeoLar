@@ -11,7 +11,7 @@ class ProfilePhoto extends Model implements Auditable
 {
     use SoftDeletes;
     use \OwenIt\Auditing\Auditable;
-    protected $fillable = ['name_original','name_hash', 'user_id', 'registeredByUser', 'inactivatedByUser'];
+    protected $fillable = ['name_original','name_hash', 'user_id', 'registered_by_user', 'inactivated_by_user'];
 
     protected $guarded = ['id', 'created_at', 'update_at'];
 

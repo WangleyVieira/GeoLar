@@ -25,4 +25,6 @@ Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('au
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::post('/home-update/{user_id}', [HomeController::class, 'updateProfilePhoto'])->name('updateProfilePhoto');
+
 });
